@@ -4,5 +4,12 @@
   </head>
   <body>
     <p>Hello</p>
+    <script>
+      (function() {
+        var styleElement = document.createElement("style");
+        styleElement.appendChild(document.createTextNode(MammothViewerStyles));
+        document.head.appendChild(styleElement);
+      })();
+    </script>
   </body>
 </html>
