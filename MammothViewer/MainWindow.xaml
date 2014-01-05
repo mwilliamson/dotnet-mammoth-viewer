@@ -4,6 +4,6 @@
         xmlns:cs="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <cs:WebView x:Name="web_view"></cs:WebView>
+        <cs:WebView x:Name="WebView"></cs:WebView>
     </Grid>
 </Window>

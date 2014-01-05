@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +29,7 @@ namespace MammothViewer
             };
             CEF.Initialize(settings);
             InitializeComponent();
-            web_view.PropertyChanged += OnPropertyChanged;
+            WebView.PropertyChanged += OnPropertyChanged;
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
@@ -40,7 +42,19 @@ namespace MammothViewer
 
         private void OnBrowserInitialised()
         {
-            web_view.LoadHtml("<p></p>");
+            WebView.LoadHtml(ReadResource("MammothViewer.index.html"));
+        }
+
+        private string ReadResource(string resourceName)
+        {
+            var currentAssembly = Assembly.GetExecutingAssembly();
+            using (var stream = currentAssembly.GetManifestResourceStream(resourceName))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
         }
     }
 }
