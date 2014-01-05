@@ -3,17 +3,34 @@
   <head>
   </head>
   <body>
-    <p>Hello</p>
+    <div class="options">
+      <h2>Options</h2>
+      <div class="file-chooser">
+        <h3>Select a .docx file</h3>
+      </div>
+    </div>
+
+    <div class="output">
+      <h2>Output</h2>
+    </div>
+
+    <div style="display: none" id="template-file-chooser">
+      <p>
+        <input type="text" class="file-path" />
+        <span class="action" data-action="select-file">Browse</span>
+      </p>
+    </div>
+    
     <script>
       (function() {
         var styleElement = document.createElement("style");
-        styleElement.appendChild(document.createTextNode(MammothViewerStyles));
+        styleElement.appendChild(document.createTextNode(MammothViewer.styles));
         document.head.appendChild(styleElement);
       })();
       
       (function() {
         var scriptElement = document.createElement("script");
-        scriptElement.appendChild(document.createTextNode(MammothViewerJs));
+        scriptElement.appendChild(document.createTextNode(MammothViewer.js));
         document.head.appendChild(scriptElement);
       })();
       

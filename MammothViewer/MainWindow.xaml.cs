@@ -42,12 +42,11 @@ namespace MammothViewer
 
         private void OnBrowserInitialised()
         {
-            WebView.RegisterJsObject("MammothViewerStyles", ReadResource("MammothViewer.style.css"));
-            WebView.RegisterJsObject("MammothViewerJs", ReadResource("MammothViewer.viewer.js"));
+            WebView.RegisterJsObject("MammothViewer", new MammothViewerModel());
             WebView.LoadHtml(ReadResource("MammothViewer.index.html"));
         }
 
-        private string ReadResource(string resourceName)
+        private static string ReadResource(string resourceName)
         {
             var currentAssembly = Assembly.GetExecutingAssembly();
             using (var stream = currentAssembly.GetManifestResourceStream(resourceName))
@@ -55,6 +54,27 @@ namespace MammothViewer
                 using (var reader = new StreamReader(stream))
                 {
                     return reader.ReadToEnd();
+                }
+            }
+        }
+
+        private class MammothViewerModel
+        {
+            public string Styles { get { return ReadResource("MammothViewer.style.css"); } }
+            public string Js { get { return ReadResource("MammothViewer.viewer.js"); } }
+
+            public string OpenFile()
+            {
+                var dialog = new Microsoft.Win32.OpenFileDialog();
+                dialog.Filter = ".docx|*.docx";
+                var result = dialog.ShowDialog();
+                if (result == true)
+                {
+                    return dialog.FileName;
+                }
+                else
+                {
+                    return null;
                 }
             }
         }
