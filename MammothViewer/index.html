@@ -10,6 +10,13 @@
         styleElement.appendChild(document.createTextNode(MammothViewerStyles));
         document.head.appendChild(styleElement);
       })();
+      
+      (function() {
+        var scriptElement = document.createElement("script");
+        scriptElement.appendChild(document.createTextNode(MammothViewerJs));
+        document.head.appendChild(scriptElement);
+      })();
+      
     </script>
   </body>
 </html>

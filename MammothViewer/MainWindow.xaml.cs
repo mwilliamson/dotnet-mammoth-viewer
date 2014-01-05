@@ -43,6 +43,7 @@ namespace MammothViewer
         private void OnBrowserInitialised()
         {
             WebView.RegisterJsObject("MammothViewerStyles", ReadResource("MammothViewer.style.css"));
+            WebView.RegisterJsObject("MammothViewerJs", ReadResource("MammothViewer.viewer.js"));
             WebView.LoadHtml(ReadResource("MammothViewer.index.html"));
         }
 
