@@ -31,6 +31,7 @@ a {
 
 .options h2 {
     color: #777;
+    padding-bottom: 15px;
 }
 
 .options .file-path {
