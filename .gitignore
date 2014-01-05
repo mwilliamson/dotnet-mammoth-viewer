@@ -1,0 +1,4 @@
+/MammothViewer/bin
+/MammothViewer/obj
+*.suo
+/packages
