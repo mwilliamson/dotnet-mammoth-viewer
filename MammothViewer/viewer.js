@@ -4,8 +4,11 @@
         setWatchedFiles: function(paths) {
             MammothViewerBackend.setWatchedFiles(JSON.stringify(paths));
         },
-        readFile: function(path) {
-            return base64DecToArr(MammothViewerBackend.readFile(path));
+        readFileBytes: function(path) {
+            return base64DecToArr(MammothViewerBackend.readFileBytesBase64(path));
+        },
+        readFileString: function(path) {
+            return MammothViewerBackend.readFileString(path);
         },
         renderOutput: renderOutput
     };
@@ -24,12 +27,22 @@
     }
 
     function renderOutput() {
-        var docxPath = document.querySelector("*[data-file-key='docx']").value;
-        var buffer = MammothViewer.readFile(docxPath);
+        var docxBuffer = MammothViewer.readFileBytes(findPath("docx"));
+        var options = {};
+        var stylesPath = findPath("styles");
+        if (stylesPath) {
+            options.styleMap = MammothViewer.readFileString(stylesPath).split("\n").map(function(line) {
+                return mammoth.style(trim(line));
+            });
+        }
 
-        mammoth.convertArrayBufferToHtml(buffer, false, function(result) {
+        mammoth.convertArrayBufferToHtml(docxBuffer, options, function(result) {
             document.querySelector(".output-display").innerHTML = result.value;
         });
+    }
+
+    function findPath(key) {
+        return document.querySelector("*[data-file-key='" + key + "']").value;
     }
 
     var templateFileChooser = document.getElementById("template-file-chooser").innerHTML;
@@ -44,7 +57,7 @@
     function initialiseFileChooser(element) {
         appendHtml(element, templateFileChooser);
         element.querySelector(".action").addEventListener("click", function() {
-            var path = MammothViewer.openFile();
+            var path = MammothViewer.openFile(element.getAttribute("data-file-filter"));
             element.querySelector(".file-path").value = path;
             element.value = path;
             element.dispatchEvent(new Event("change"));
@@ -62,6 +75,10 @@
 
     main();
 
+
+    function trim(str) {
+        return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    }
 
     /*\
 |*|

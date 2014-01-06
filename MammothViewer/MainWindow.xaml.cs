@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Input;
@@ -74,15 +75,20 @@ namespace MammothViewer
             {
                 m_Browser = browser;
             }
-            public string ReadFile(string path)
+            public string ReadFileBytesBase64(string path)
             {
                 return Convert.ToBase64String(File.ReadAllBytes(path));
             }
 
-            public string OpenFile()
+            public string ReadFileString(string path)
+            {
+                return File.ReadAllText(path, Encoding.UTF8);
+            }
+
+            public string OpenFile(string filter)
             {
                 var dialog = new Microsoft.Win32.OpenFileDialog();
-                dialog.Filter = ".docx|*.docx";
+                dialog.Filter = filter;
                 var result = dialog.ShowDialog();
                 if (result == true)
                 {
@@ -112,6 +118,7 @@ namespace MammothViewer
                 var filename = Path.GetFileName(path);
                 var watcher = new FileSystemWatcher(directory, filename);
                 watcher.Changed += (x, y) => RenderOutput();
+                watcher.EnableRaisingEvents = true;
                 return watcher;
             }
 
