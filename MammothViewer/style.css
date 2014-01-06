@@ -56,6 +56,10 @@ a {
     background-color: white;
 }
 
+.output .output-display {
+    padding: 15px;
+}
+
 .output h2 {
     background-color: #0072c3;
     color: #fff;
