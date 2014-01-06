@@ -36,7 +36,7 @@
             });
         }
 
-        mammoth.convertArrayBufferToHtml(docxBuffer, options, function(result) {
+        mammoth.convertToHtml({arrayBuffer: docxBuffer}, options).then(function(result) {
             document.querySelector(".output-display").innerHTML = result.value;
         });
     }
