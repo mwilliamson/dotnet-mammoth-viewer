@@ -31,9 +31,7 @@
         var options = {};
         var stylesPath = findPath("styles");
         if (stylesPath) {
-            options.styleMap = MammothViewer.readFileString(stylesPath).split("\n").map(function(line) {
-                return mammoth.style(trim(line));
-            });
+            options.styleMap = MammothViewer.readFileString(stylesPath);
         }
 
         mammoth.convertToHtml({arrayBuffer: docxBuffer}, options).then(function(result) {
