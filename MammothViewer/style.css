@@ -2,19 +2,9 @@
     font-family: calibri, arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
-    padding: 0;
-}
-
-h2 {
+.options h2, h2.output-heading {
     font-size: 24pt;
     font-weight: normal;
-}
-
-a {
-    color: rgb(27, 161, 226);
-    text-decoration: none;
 }
 
 .options {
@@ -29,9 +19,23 @@ a {
     background-color: #eee;
 }
 
+.options a {
+    color: rgb(27, 161, 226);
+    text-decoration: none;
+}
+
 .options h2 {
+    margin: 0;
+    padding: 0 0 15px 0;
     color: #777;
-    padding-bottom: 15px;
+}
+
+.options h3 {
+    margin: 10px 0 0 0;
+}
+
+.options p {
+    margin: 0;
 }
 
 .options .file-path {
@@ -60,10 +64,11 @@ a {
     padding: 15px;
 }
 
-.output h2 {
+h2.output-heading {
+    margin: 0;
+    padding: 15px;
     background-color: #0072c3;
     color: #fff;
-    padding: 15px;
 }
 
 .action {
