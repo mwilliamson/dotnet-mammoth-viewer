@@ -4429,6 +4429,7 @@ exports.fileInput = fileInput;
 exports.readFileInputOnChange = readFileInputOnChange;
 exports.standardOptions = mammoth.standardOptions;
 exports.htmlPaths = mammoth.htmlPaths;
+exports.style = mammoth.style;
 
 exports.convertDocumentToHtml = callbackify(mammoth.convertDocumentToHtml);
 exports.convertArrayBufferToHtml = convertArrayBufferToHtml;
