@@ -2,3 +2,4 @@
 /MammothViewer/obj
 *.suo
 /packages
+*.user
