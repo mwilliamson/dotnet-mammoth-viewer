@@ -94,6 +94,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\packages\CefSharp.Wpf.1.25.5\cef\devtools_resources.pak">
+      <Link>devtools_resources.pak</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\packages\CefSharp.Wpf.1.25.5\cef\locales\en-US.pak">
+      <Link>locales\en-US.pak</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
