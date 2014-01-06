@@ -32,6 +32,15 @@ namespace MammothViewer
             CEF.Initialize(settings);
             InitializeComponent();
             WebView.PropertyChanged += OnPropertyChanged;
+            KeyDown += (sender, eventArgs) => HandleKeyDown(eventArgs.Key);
+        }
+
+        private void HandleKeyDown(Key key)
+        {
+            if (key == Key.F11)
+            {
+                WebView.ShowDevTools();
+            }
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
@@ -46,7 +55,6 @@ namespace MammothViewer
         {
             WebView.RegisterJsObject("MammothViewerBackend", new MammothViewerModel(WebView));
             WebView.LoadHtml(ReadResource("MammothViewer.index.html"));
-            WebView.ShowDevTools();
         }
 
         private static string ReadResource(string resourceName)
