@@ -5,13 +5,16 @@
   <body>
     <div class="options">
       <h2>Options</h2>
-      <div class="file-chooser">
+      <div class="file-chooser" data-file-key="docx">
         <h3>Select a .docx file</h3>
       </div>
     </div>
 
     <div class="output">
       <h2>Output</h2>
+      <div class="output-display">
+        
+      </div>
     </div>
 
     <div style="display: none" id="template-file-chooser">
@@ -24,13 +27,13 @@
     <script>
       (function() {
         var styleElement = document.createElement("style");
-        styleElement.appendChild(document.createTextNode(MammothViewer.styles));
+        styleElement.appendChild(document.createTextNode(MammothViewerBackend.styles));
         document.head.appendChild(styleElement);
       })();
       
       (function() {
         var scriptElement = document.createElement("script");
-        scriptElement.appendChild(document.createTextNode(MammothViewer.js));
+        scriptElement.appendChild(document.createTextNode(MammothViewerBackend.js));
         document.head.appendChild(scriptElement);
       })();
       
